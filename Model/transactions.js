@@ -3,7 +3,7 @@ import db from "../Config/config.js";
 
 const attributes = {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUIDV4,
     allowNull: false,
     defaultValue: null,
     comment: null,
@@ -11,96 +11,78 @@ const attributes = {
     field: "id",
     autoIncrement: true,
   },
-  m_resep_id: {
+  customer_id: {
+    type: DataTypes.UUIDV4,
+    allowNull: true,
+    defaultValue: null,
+    comment: null,
+    primaryKey: false,
+    field: "customer_id",
+    autoIncrement: false,
+  },
+  customer_address_id: {
+    type: DataTypes.UUIDV4,
+    allowNull: true,
+    defaultValue: null,
+    comment: null,
+    primaryKey: false,
+    field: "customer_address_id",
+    autoIncrement: false,
+  },
+  qty: {
     type: DataTypes.INTEGER,
     allowNull: true,
     defaultValue: null,
     comment: null,
     primaryKey: false,
-    field: "m_resep_id",
+    field: "qty",
     autoIncrement: false,
   },
-  m_obat_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-    comment: null,
-    primaryKey: false,
-    field: "m_obat_id",
-    autoIncrement: false,
-  },
-  jumlah: {
+  price: {
     type: DataTypes.FLOAT,
     allowNull: true,
     defaultValue: null,
     comment: null,
     primaryKey: false,
-    field: "jumlah",
+    field: "price",
     autoIncrement: false,
   },
-  m_satuan_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-    comment: null,
-    primaryKey: false,
-    field: "m_satuan_id",
-    autoIncrement: false,
-  },
-  aturan_pakai: {
-    type: DataTypes.CHAR(100),
-    allowNull: true,
-    defaultValue: null,
-    comment: null,
-    primaryKey: false,
-    field: "aturan_pakai",
-    autoIncrement: false,
-  },
-  cara_pakai: {
-    type: DataTypes.CHAR(100),
-    allowNull: true,
-    defaultValue: null,
-    comment: null,
-    primaryKey: false,
-    field: "cara_pakai",
-    autoIncrement: false,
-  },
-  clinic_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: null,
-    comment: null,
-    primaryKey: false,
-    field: "clinic_id",
-    autoIncrement: false,
-  },
-  created_at: {
+  created: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: null,
     comment: null,
     primaryKey: false,
-    field: "created_at",
+    field: "created",
     autoIncrement: false,
   },
-  updated_at: {
+  updated: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: null,
     comment: null,
     primaryKey: false,
-    field: "updated_at",
+    field: "updated",
+    autoIncrement: false,
+  },
+  status: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: null,
+    comment: null,
+    primaryKey: false,
+    field: "status",
     autoIncrement: false,
   },
 };
 const options = {
   freezeTableName: true,
   timestamps: false,
-  tableName: "mapping_resep_obat",
+  tableName: "transactions",
   comment: "",
   indexes: [],
 };
-const resepObatModel = db.define("mapping_resep_obat", attributes, options);
-export default resepObatModel;
+const transactionModel = db.define("transactions", attributes, options);
+export default transactionModel;
 
 // return MAsuransiModel;
