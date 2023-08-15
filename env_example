@@ -1,0 +1,55 @@
+// === lokal ===
+DB_NAME= 'farmasi_simklinik'
+DB_USER = 'postgres'
+DB_PASSWORD = 'password'
+DB_HOST = 'localhost' 
+DB_PORT = '5432'
+HOSTSERVER = '0.0.0.0'
+PORTSERVER = '4005'
+
+// === server ===
+DB_NAME= 'farmasi_simklinik'
+DB_USER = 'postgres'
+DB_PASSWORD = 'password'
+DB_HOST = 'db-farmasi-simklinik' 
+DB_PORT = '5432'
+HOSTSERVER = '0.0.0.0'
+PORTSERVER = '4005'
+
+
+// === server ep ===
+API_DATAMASTER = 'http://192.168.100.50:3001/'
+API_PASIEN = 'http://192.168.100.50:3009/'
+API_REKAMMEDIS = 'http://192.168.100.50:3011/'
+API_RAWATJALAN = 'http://192.168.100.50:5000/'
+API_RAWATINAP = 'http://192.168.100.50:5001/'
+API_PENDAFTARAN = 'http://192.168.100.50:5002/'
+API_PEMBAYARAN = 'http://192.168.100.50:5003/'
+API_LAB = 'http://192.168.100.50:5004/'
+API_AUTH = 'http://192.168.100.50:3004'
+
+
+// === vpn ep ===
+API_DATAMASTER = 'http://10.8.0.118:3001/'
+API_PASIEN = 'http://10.8.0.118:3009/'
+API_REKAMMEDIS = 'http://10.8.0.118:3011/'
+API_RAWATJALAN = 'http://10.8.0.118:5000/'
+API_RAWATINAP = 'http://10.8.0.118:5001/'
+API_PENDAFTARAN = 'http://10.8.0.118:5002/'
+API_PEMBAYARAN = 'http://10.8.0.118:5003/'
+API_LAB = 'http://10.8.0.118:5004/'
+API_AUTH = 'http://10.8.0.118:3004'
+
+
+167.172.148.74
+
+// === cloud ep ===
+API_DATAMASTER = 'http://167.172.148.74:3001/'
+API_PASIEN = 'http://167.172.148.74:3009/'
+API_REKAMMEDIS = 'http://167.172.148.74:3011/'
+API_RAWATJALAN = 'http://167.172.148.74:5000/'
+API_RAWATINAP = 'http://167.172.148.74:5001/'
+API_PENDAFTARAN = 'http://167.172.148.74:5002/'
+API_PEMBAYARAN = 'http://167.172.148.74:5003/'
+API_LAB = 'http://167.172.148.74:5004/'
+API_AUTH = 'http://167.172.148.74:3004'
