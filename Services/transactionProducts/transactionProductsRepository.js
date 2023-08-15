@@ -5,8 +5,8 @@ import transactionProductModel from "../../Model/transactionProducts.js";
 import { Op } from "sequelize";
 import sequelize from "sequelize";
 import pkg from 'lodash';
+import transactionPaymentModel from "../../Model/transactionPayments.js";
 const { groupBy, forEach, find } = pkg;
-import { getDateTime } from "../../Helper/Helper.js";
 
 // Start Session Create Data Transaction
 const createTransaction = async (data, transaction) => {
@@ -54,7 +54,13 @@ const updateTransaction = async (data, filter, transaction) => {
 
 // Start Session Read Data Transaction
 const readTransaction = async ({ search }, page, page_size) => {
+  var customerId = customerModel.belongsTo(transactionModel, {
+    foreignKey: "customer_id",
+  });
 
+  var customerAddressId = customerAddressModel.belongsTo(transactionModel, {
+    foreignKey: "customer_address_id",
+  });
   try {
     let result = await transactionModel.findAndCountAll({
       where: {
@@ -63,62 +69,48 @@ const readTransaction = async ({ search }, page, page_size) => {
           {employer_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('employer_name')), 'LIKE', '%' + search + '%')},
         ],        
       },
+      included: [customerId, customerAddressId],
       offset: page_size * page,
       limit: page_size,
       order: [["id", "DESC"]],
     });
-    let result2 = await customerModel.findAndCountAll()
-    let result3 = await customerAddressModel.findAndCountAll()
+    let result2 = await transactionPaymentModel.findAndCountAll()
+    let result3 = await transactionProductModel.findAndCountAll()
 
     var datas = result.rows;
     var datas2 = result2.rows;
     var datas3 = result3.rows;
 
     var newArray = datas.map((item) => {
-      const ArrayObat = []
+      const transactionArray = []
 
-      let filterData = datas2.filter(data => data.m_resep_id == item.id);
+      let filterProduct = datas3.filter(data => data.transaction_id == item.id);
 
       
-      forEach(filterData, row => {
+      forEach(filterProduct, row => {
 
-      let dataObat = datas3.filter(data => data.id == row.m_obat_id)[0]; 
-      let dataSatuan = datas4.filter(data => data.id == row.m_satuan_id)[0]; 
+      let dataPayment = datas2.filter(data => data.id == row.payment_method_id)[0]; 
 
-      let detailObat = {
-        id_obat: dataObat.id,
-        nama_obat: dataObat.nama,
-        kode_obat: dataObat.kode,
-        harga_jual: dataObat.harga_jual,
-        jumlah: filterData[0].jumlah,
-        cara_pakai: filterData[0].cara_pakai,
-        aturan_pakai: filterData[0].aturan_pakai,
-        m_satuan_id: dataSatuan.id,
-        nama_satuan: dataSatuan.nama
+      let detailTransaction = {
+        id: dataPayment.id,
+        nama_obat: dataPayment.nama,
+        kode_obat: dataPayment.kode,
+        harga_jual: dataPayment.harga_jual,
+        transaction_id: dataPayment[0].transaction_id,
+        payment_method_id: dataPayment[0].payment_method_id,
+        aturan_pakai: dataPayment[0].aturan_pakai,
       }
-      ArrayObat.push(detailObat);
+      transactionArray.push(detailTransaction);
     });
 
       return {
       id: item.id,
-      clinic_id: item.clinic_id,
       transaction_code: item.transaction_code,
       employer_name: item.employer_name,
-      nama_dokter: item.nama_dokter,
-      no_reg: item.no_reg,
-      jumlah_obat: item.jumlah_obat,
-      m_satuan_id: item.m_satuan_id,
-      obat: ArrayObat,
-      asuransi: item.asuransi,
-      no_asuransi: item.no_asuransi,
-      no_invoice: item.no_invoice,
-      status_pemeriksaan: item.status_pemeriksaan,
-      status_proses: item.status_proses,
-      keterangan: item.keterangan,
-      m_dokter_id: item.m_dokter_id,
+      customer: item.customer,
+      customer_address: item.customer_address,
+      details: transactionArray,
       status: item.status,
-      created_at: getDateTime(item.created_at),
-      updated_at: getDateTime(item.updated_at)
       };
     });
   

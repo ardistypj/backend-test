@@ -20,13 +20,13 @@ const attributes = {
     field: "transaction_id",
     autoIncrement: false,
   },
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false,
+  payment_method_id: {
+    type: DataTypes.UUIDV4,
+    allowNull: true,
     defaultValue: null,
     comment: null,
     primaryKey: false,
-    field: "date",
+    field: "payment_method_id",
     autoIncrement: false,
   },
   status: {

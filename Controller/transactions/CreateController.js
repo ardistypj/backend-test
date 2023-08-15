@@ -6,6 +6,8 @@ import { createTransactionPayment } from "../../Services/transactionPayment/tran
 import { createTransactionProduct } from "../../Services/transactionProducts/transactionProductsRepository.js";
 import { readProductById } from "../../Services/products/productsRepository.js";
 import { validationResult } from "express-validator";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default async function createOne(req, res) {
   try {
@@ -27,11 +29,11 @@ export default async function createOne(req, res) {
         id: uuidv4(),
         transaction_code: generateCode(5),
         customer_id: req.body.customer_id,
-        customer_address_id: req.body.m_satuan_id,
+        customer_address_id: req.body.customer_address_id,
         employer_name: req.body.employer_name,
         status: true,
     };
-      var products = req.body.products_id;  // Req Input Data Obat
+      var products = req.body.products;  // Req Input Data Obat
 
       // Cek Data Obat required
       if (products == 0 || products === undefined) {
@@ -58,16 +60,17 @@ export default async function createOne(req, res) {
             qty: item.qty,
             product_price: getProducts.price,
             total: item.qty*getProducts.price,
-            transaction_id: createTransaction.id,
+            transaction_id: createTransactionData.id,
             };
 
           // Create Data Pivot 
           let createTransactionProducts = await createTransactionProduct(
             transactionProduct
           );
-
+            console.log("liak", item.payment_method_id)
           var transactionPayment = {
-            transaction_id: createTransaction.id,
+            id: uuidv4(),
+            transaction_id: createTransactionData.id,
             payment_method_id: item.payment_method_id,
             status: true,
           }
@@ -79,15 +82,12 @@ export default async function createOne(req, res) {
         });
 
         var responseData = {
-          id: uuidv4(),
           transaction_code: generateCode(5),
           customer_id: req.body.customer_id,
           customer_address_id: req.body.m_satuan_id,
           employer_name: req.body.employer_name,
           status: true,
           products: products,
-          created_at: convertTZ(new Date(Date.now()), "Asia/Jakarta"),
-          updated_at: convertTZ(new Date(Date.now()), "Asia/Jakarta")
         };
 
         return success("Success to add transaction data", 201, responseData, res);
