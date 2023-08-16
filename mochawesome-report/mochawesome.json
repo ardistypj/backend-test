@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-08-16T04:05:05.116Z",
+    "end": "2023-08-16T04:05:05.653Z",
+    "duration": 537,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8b79d7e4-4a51-409a-99e6-79bfee6f0601",
+      "title": "",
+      "fullFile": "C:\\Users\\User\\Documents\\backend-test\\Testing\\transactionTest.js",
+      "file": "\\Testing\\transactionTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c80639a0-6727-4ec3-ac4c-364726a5b8ff",
+          "title": "API TEST",
+          "fullFile": "C:\\Users\\User\\Documents\\backend-test\\Testing\\transactionTest.js",
+          "file": "\\Testing\\transactionTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "CREATE CUSTOMER AND CUSTOMER ADDRESS",
+              "fullTitle": "API TEST CREATE CUSTOMER AND CUSTOMER ADDRESS",
+              "timedOut": false,
+              "duration": 246,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n    customer_name: 'ardisty test',\n    address: 'somewhere',\n};\n    \nreturn request\n    .post('customer')\n    .send(data)\n    .then((res) => {\n        expect(res.status).to.eq(200);\n        expect(res.ok).to.eq(true);\n    });",
+              "err": {},
+              "uuid": "03330abb-e1d1-41f0-8f01-8f5539afae6f",
+              "parentUUID": "c80639a0-6727-4ec3-ac4c-364726a5b8ff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CREATE PAYMENT METHOD",
+              "fullTitle": "API TEST CREATE PAYMENT METHOD",
+              "timedOut": false,
+              "duration": 27,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n    name: 'Bank Transfer',\n    is_active: true,\n};\n    \nreturn request\n    .post('paymentMethod')\n    .send(data)\n    .then((res) => {\n        expect(res.status).to.eq(200);\n        expect(res.ok).to.eq(true);\n    });",
+              "err": {},
+              "uuid": "fcf601eb-bc6f-4aac-9221-1e0a4e8d327e",
+              "parentUUID": "c80639a0-6727-4ec3-ac4c-364726a5b8ff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CREATE PRODUCTS",
+              "fullTitle": "API TEST CREATE PRODUCTS",
+              "timedOut": false,
+              "duration": 86,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data = {\n    name: 'ROKOK',\n    price: 80000,\n};\n    \nreturn request\n    .post('product')\n    .send(data)\n    .then((res) => {\n        expect(res.status).to.eq(200);\n        expect(res.ok).to.eq(true);\n    });",
+              "err": {},
+              "uuid": "8ab86142-d2eb-4937-afa8-7d59115722da",
+              "parentUUID": "c80639a0-6727-4ec3-ac4c-364726a5b8ff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "CREATE TRANSACTION",
+              "fullTitle": "API TEST CREATE TRANSACTION",
+              "timedOut": false,
+              "duration": 78,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const data ={ \ncustomer_id: uuidv4(),\ncustomer_address_id: uuidv4(),\nemployer_name: \"jubran\",\nproducts: [\n    {\n        id: uuidv4(),\n        qty: \"5\",\n        payment_method_id: uuidv4()\n    },\n    {\n        id: uuidv4(),\n        qty: \"5\",\n        payment_method_id: uuidv4()\n    }\n]\n        };\n    \nreturn request\n    .post('transaction')\n    .send(data)\n    .then((res) => {\n        expect(res.status).to.eq(200);\n        expect(res.ok).to.eq(true);\n    });",
+              "err": {},
+              "uuid": "e211cc57-e25f-4481-b81a-c59a94482c3e",
+              "parentUUID": "c80639a0-6727-4ec3-ac4c-364726a5b8ff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "03330abb-e1d1-41f0-8f01-8f5539afae6f",
+            "fcf601eb-bc6f-4aac-9221-1e0a4e8d327e",
+            "8ab86142-d2eb-4937-afa8-7d59115722da",
+            "e211cc57-e25f-4481-b81a-c59a94482c3e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 437,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 5000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 5000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.2.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

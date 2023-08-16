@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   api:
-    container_name: api-farmasi-simklinik
+    container_name: backend-test
     restart: always
     build:
       context: .
@@ -9,42 +9,26 @@ services:
     environment:
       - NODE_ENV=dev
     ports:
-      - '3012:4008'
+      - '4005:4005'
     depends_on:
       - db
     volumes:
     - .:/app
     networks:
-      - simklinik
-  api-2:
-    container_name: api-farmasi-simklinik-2
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - NODE_ENV=dev
-    ports:
-      - '3023:4008'
-    depends_on:
-      - db
-    volumes:
-    - .:/app
-    networks:
-      - simklinik
+      - backend-test
   db:
-    container_name: db-farmasi-simklinik
+    container_name: backend-test-db
     image: postgres
     ports:
-      - '5445:5432'
+      - '5432:5432'
     volumes:
-      - ./Database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./Database/test.sql:/docker-entrypoint-initdb.d/schema.sql
       - data:/data/simklinik/farmasi
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     networks:
-      - simklinik
+      - backend-test
 
 volumes: 
  data: {}

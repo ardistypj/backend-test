@@ -84,7 +84,7 @@ export default async function createOne(req, res) {
         var responseData = {
           transaction_code: generateCode(5),
           customer_id: req.body.customer_id,
-          customer_address_id: req.body.m_satuan_id,
+          customer_address_id: req.body.customer_address_id,
           employer_name: req.body.employer_name,
           status: true,
           products: products,

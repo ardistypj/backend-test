@@ -1,0 +1,463 @@
+{
+	"info": {
+		"_postman_id": "77d28da9-251e-4293-bae0-b386cd2d4aa4",
+		"name": "Backend-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5599242"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_name\": \"test\",\r\n    \"address\": \"jetis\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/customer",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_name\": \"test555\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/customer?id=2d401a1b-1d09-4335-87d1-252b525d3b80",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2d401a1b-1d09-4335-87d1-252b525d3b80"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_name\": \"test2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/customer?search=test2&page=0&page_size=5",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "test2"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customerAddress",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"jetis mana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/customerAddress?id=667209c0-5da5-4022-b1f2-3301696d9c6f",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"customerAddress"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "667209c0-5da5-4022-b1f2-3301696d9c6f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "0.0.0.0:4005/api/customerAddress?page=0&page_size=5&search",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"customerAddress"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "paymentMethod",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"transfer\",\r\n    \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/paymentMethod",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"paymentMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"is_active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/paymentMethod?id=1449a8e1-b606-442b-b133-87b38a28028b",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"paymentMethod"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1449a8e1-b606-442b-b133-87b38a28028b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "0.0.0.0:4005/api/paymentMethod?search&page=0&page_size=5",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"paymentMethod"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"rokok\",\r\n    \"price\": 8000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/product",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"rokok\",\r\n    \"price\": 9000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/product?id=a63ef322-3c51-4e55-b8a0-28aeef825c44",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "a63ef322-3c51-4e55-b8a0-28aeef825c44"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "0.0.0.0:4005/api/product?search&page=0&page_size=5",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"b6cc2aac-33be-4c49-bcae-ad2326005647\",\r\n    \"customer_address_id\": \"667209c0-5da5-4022-b1f2-3301696d9c6f\",\r\n    \"employer_name\": \"jubran\",\r\n    \"products\": [\r\n        {\r\n            \"id\": \"a63ef322-3c51-4e55-b8a0-28aeef825c44\",\r\n            \"qty\": \"5\",\r\n            \"payment_method_id\": \"1449a8e1-b606-442b-b133-87b38a28028b\"\r\n        },\r\n        {\r\n            \"id\": \"a63ef322-3c51-4e55-b8a0-28aeef825c44\",\r\n            \"qty\": \"5\",\r\n            \"payment_method_id\": \"1449a8e1-b606-442b-b133-87b38a28028b\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:4005/api/transaction",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "4005",
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
